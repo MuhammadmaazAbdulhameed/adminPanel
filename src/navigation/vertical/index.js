@@ -1,10 +1,10 @@
-import { Mail, Home } from "react-feather"
+import { Mail, Grid } from "react-feather"
 
 export default [
   {
-    id: "home",
-    title: "Home",
-    icon: <Home size={20} />,
+    id: "dashboard",
+    title: "dashboard",
+    icon: <Grid size={20} />,
     navLink: "/dashboard"
   },
   {
