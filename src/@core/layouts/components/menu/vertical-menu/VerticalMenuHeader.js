@@ -43,7 +43,7 @@ const VerticalMenuHeader = (props) => {
     } else {
       return (
         <Circle
-          size={200}
+          size={20}
           data-tour="toggle-icon"
           className="text-white toggle-icon d-none d-xl-block"
           onClick={() => setMenuCollapsed(false)}
@@ -63,12 +63,12 @@ const VerticalMenuHeader = (props) => {
             <span className="brand-logo">
               <img src={themeConfig.app.appLogoImage} alt="logo" />
             </span>
-            <h2 className="brand-text mb-0">{themeConfig.app.appName}</h2>
+            {/* <h2 className="brand-text mb-0">{themeConfig.app.appName}</h2> */}
           </NavLink>
         </li>
         <li className="nav-item nav-toggle">
           <div className="nav-link modern-nav-toggle cursor-pointer">
-            <Toggler  />
+            <Toggler />
             <X
               onClick={() => setMenuVisibility(false)}
               className="toggle-icon icon-x d-block d-xl-none"
