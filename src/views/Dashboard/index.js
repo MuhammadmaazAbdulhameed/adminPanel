@@ -1,17 +1,17 @@
 
 // ** Reactstrap Imports
-import { Row, Col } from 'reactstrap'
+import { Col, Row } from 'reactstrap'
 
 // ** Custom Components
-import StatsHorizontal from '@components/widgets/stats/StatsHorizontal'
 
 // ** Icons Imports
-import { User, UserPlus, UserCheck, UserX } from 'react-feather'
+import { User } from 'react-feather'
 
 // ** Styles
 import '@styles/react/apps/app-users.scss'
-import StatsCard from '../../components/dashbaord/statsCard'
 import { useEffect, useState } from 'react'
+import StatsCard from '../../components/dashbaord/statsCard'
+import Header from '../../components/dashbaord/header'
 
 
 const UsersList = () => {
@@ -42,6 +42,7 @@ const UsersList = () => {
   }, [])
   return (
     <div className='app-user-list'>
+      <Header />
       <Row>
         {dashbaord?.map(((item, index) => (
           <Col lg='3' sm='6' key={index}>
