@@ -24,5 +24,11 @@ export default [
     title: "Creator's Survey",
     icon: <Mail size={20} />,
     navLink: "/creators-survey"
+  },
+  {
+    id: "buyMoreContent",
+    title: "Buy More Content",
+    icon: <Mail size={20} />,
+    navLink: "/buy-more-content"
   }
 ]

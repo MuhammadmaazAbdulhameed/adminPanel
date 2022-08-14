@@ -20,7 +20,7 @@ const getLayout = {
 }
 
 // ** Document title
-const TemplateTitle = "%s - Vuexy React Admin Template"
+const TemplateTitle = "%s - Admin"
 
 // ** Default Route
 const DefaultRoute = "/dashboard"
@@ -29,6 +29,7 @@ const Dashbaord = lazy(() => import("../../views/Dashboard/index"))
 const Influencer = lazy(() => import("../../views/Influencer/index"))
 const Brands = lazy(() => import("../../views/Brands/index"))
 const CreatorsSurvey = lazy(() => import("../../views/CreatorsSurvey/index"))
+const BuyMoreContent = lazy(() => import("../../views/BuyMoreContent/index"))
 const Login = lazy(() => import("../../views/Login"))
 const Register = lazy(() => import("../../views/Register"))
 const ForgotPassword = lazy(() => import("../../views/ForgotPassword"))
@@ -56,6 +57,10 @@ const Routes = [
   {
     path: "/creators-survey",
     element: <CreatorsSurvey />
+  },
+  {
+    path: "/buy-more-content",
+    element: <BuyMoreContent />
   },
   {
     path: "/login",
