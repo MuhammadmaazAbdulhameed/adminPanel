@@ -26,7 +26,9 @@ const TemplateTitle = "%s - Vuexy React Admin Template"
 const DefaultRoute = "/dashboard"
 
 const Dashbaord = lazy(() => import("../../views/Dashboard/index"))
-const SecondPage = lazy(() => import("../../views/SecondPage"))
+const Influencer = lazy(() => import("../../views/Influencer/index"))
+const Brands = lazy(() => import("../../views/Brands/index"))
+const CreatorsSurvey = lazy(() => import("../../views/CreatorsSurvey/index"))
 const Login = lazy(() => import("../../views/Login"))
 const Register = lazy(() => import("../../views/Register"))
 const ForgotPassword = lazy(() => import("../../views/ForgotPassword"))
@@ -44,8 +46,16 @@ const Routes = [
     element: <Dashbaord />
   },
   {
-    path: "/second-page",
-    element: <SecondPage />
+    path: "/influencer",
+    element: <Influencer />
+  },
+  {
+    path: "/brands",
+    element: <Brands />
+  },
+  {
+    path: "/creators-survey",
+    element: <CreatorsSurvey />
   },
   {
     path: "/login",
@@ -111,7 +121,7 @@ const MergeLayoutRoutes = (layout, defaultLayout) => {
             // eslint-disable-next-line multiline-ternary
             isObjEmpty(route.element.props) && isBlank === false
               ? // eslint-disable-next-line multiline-ternary
-                LayoutWrapper
+              LayoutWrapper
               : Fragment
 
           route.element = (
