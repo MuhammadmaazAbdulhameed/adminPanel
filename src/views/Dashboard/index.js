@@ -14,7 +14,7 @@ import StatsCard from '../../components/dashbaord/statsCard'
 import Header from '../../components/dashbaord/header'
 
 
-const UsersList = () => {
+const Dashboard = () => {
 
   const [dashbaord, setDashbaord] = useState([
     {
@@ -41,7 +41,7 @@ const UsersList = () => {
     }
   }, [])
   return (
-    <div className='app-user-list'>
+    <div className=''>
       <Header />
       <Row>
         {dashbaord?.map(((item, index) => (
@@ -54,9 +54,8 @@ const UsersList = () => {
           </Col>
         )))}
       </Row>
-
     </div>
   )
 }
 
-export default UsersList
+export default Dashboard
