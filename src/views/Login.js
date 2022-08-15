@@ -1,10 +1,44 @@
 import "@styles/react/pages/page-authentication.scss"
+import axios from "axios"
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+
 import {
   Button, Card, CardImg, CardImgOverlay, CardText, Col, Input, Row
 } from "reactstrap"
+import { Failure, Success } from "../components/toast"
 const Login = () => {
   const navigate = useNavigate()
+  const [email, setEmail] = useState('admin@authentic.com')
+  const [password, setPassword] = useState('Intro!234')
+  const login = () => {
+    if (!email && !email.length) {
+      Failure("Please enter Email")
+      return false
+    }
+    if (!password && !password.length) {
+      Failure("Please enter password ")
+      return false
+    }
+
+    const body = {
+      email,
+      password
+    }
+
+    axios.post(`http://authentic-web.authenticmatchinglimited.com/api/admin_login`, body)
+      .then(response => {
+        console.log(response?.data, "response?.data")
+        localStorage.setItem('userDetails', JSON.stringify(response?.data?.response?.detail))
+        localStorage.setItem('token', response?.data?.response?.detail?.token)
+        localStorage.setItem('role', response?.data?.response?.detail?.type)
+        Success(response?.data?.response?.message)
+        navigate("/dashboard")
+      })
+      .catch(err => {
+        Failure(err?.response?.data?.error?.message)
+      })
+  }
   return (
     <div className="auth-wrapper auth-cover">
       <Row className="auth-inner m-0 pb-0">
@@ -25,21 +59,21 @@ const Login = () => {
                       <small className="text-secondary">enter your email to continue</small>
                     </CardText>
                     <div className="mb-1">
-                      <div><Input placeholder="email" /></div>
+                      <div><Input placeholder="email" type="email" onChange={(e) => setEmail(e.target.value)} value={email} /></div>
                     </div>
                     <div className="mb-1">
-                      <div><Input type="password" placeholder="password" /></div>
+                      <div><Input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} value={password} /></div>
                     </div>
-                    <Button
+                    <Button.Ripple
                       color="primary"
                       className="bg-white "
                       block
-                      onClick={() => navigate("/dashboard")}
+                      onClick={login}
                     >
                       <small className="">
                         login
                       </small>
-                    </Button>
+                    </Button.Ripple >
                     <Link to="/forget-password " className="text-center w-100">
                       <small className="text-dark">
                         forget password
@@ -51,59 +85,7 @@ const Login = () => {
             </CardImgOverlay>
 
           </Card>
-          {/* <Col className="px-xl-2 mx-auto" sm="8" md="6" lg="12">
-            <CardTitle tag="h2" className="fw-bold mb-1">
-              Welcome to Vuexy! 👋
-            </CardTitle>
-            <CardText className="mb-2">
-              Please sign-in to your account and start the adventure
-            </CardText>
-            <Form
-              className="auth-login-form mt-2"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <div className="mb-1">
-                <Label className="form-label" for="login-email">
-                  Email
-                </Label>
-                <Input
-                  type="email"
-                  id="login-email"
-                  placeholder="john@example.com"
-                  autoFocus
-                />
-              </div>
-              <div className="mb-1">
-                <div className="d-flex justify-content-between">
-                  <Label className="form-label" for="login-password">
-                    Password
-                  </Label>
-                  <Link to="/forgot-password">
-                    <small>Forgot Password?</small>
-                  </Link>
-                </div>
-                <InputPasswordToggle
-                  className="input-group-merge"
-                  id="login-password"
-                />
-              </div>
-              <div className="form-check mb-1">
-                <Input type="checkbox" id="remember-me" />
-                <Label className="form-check-label" for="remember-me">
-                  Remember Me
-                </Label>
-              </div>
-              <Button tag={Link} to="/" color="primary" block>
-                Sign in
-              </Button>
-            </Form>
-            <p className="text-center mt-2">
-              <span className="me-25">New on our platform?</span>
-              <Link to="/register">
-                <span>Create an account</span>
-              </Link>
-            </p>  
-          </Col> */}
+
         </Col>
       </Row>
     </div>
