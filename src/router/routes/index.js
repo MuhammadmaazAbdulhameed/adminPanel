@@ -3,9 +3,9 @@ import { Fragment, lazy } from "react"
 import { Navigate } from "react-router-dom"
 // ** Layouts
 import BlankLayout from "@layouts/BlankLayout"
-import VerticalLayout from "@src/layouts/VerticalLayout"
-import HorizontalLayout from "@src/layouts/HorizontalLayout"
 import LayoutWrapper from "@src/@core/layouts/components/layout-wrapper"
+import HorizontalLayout from "@src/layouts/HorizontalLayout"
+import VerticalLayout from "@src/layouts/VerticalLayout"
 
 // ** Route Components
 import PublicRoute from "@components/routes/PublicRoute"
@@ -20,7 +20,7 @@ const getLayout = {
 }
 
 // ** Document title
-const TemplateTitle = "%s - Admin"
+const TemplateTitle = "%s - Admin "
 
 // ** Default Route
 const DefaultRoute = "/dashboard"
@@ -28,6 +28,7 @@ const DefaultRoute = "/dashboard"
 const Dashbaord = lazy(() => import("../../views/Dashboard/index"))
 const Influencer = lazy(() => import("../../views/Influencer/index"))
 const Brands = lazy(() => import("../../views/Brands/index"))
+const Campaigns = lazy(() => import("../../views/Campaigns/index"))
 const CreatorsSurvey = lazy(() => import("../../views/CreatorsSurvey/index"))
 const BuyMoreContent = lazy(() => import("../../views/BuyMoreContent/index"))
 const Login = lazy(() => import("../../views/Login"))
@@ -53,6 +54,10 @@ const Routes = [
   {
     path: "/brands",
     element: <Brands />
+  },
+  {
+    path: "/campaigns",
+    element: <Campaigns />
   },
   {
     path: "/creators-survey",
