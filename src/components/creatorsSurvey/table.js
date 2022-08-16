@@ -3,7 +3,6 @@ import { Button, Table } from 'reactstrap'
 
 const CreatorsSurveyTable = ({ data, modalVisibilityAction, setCreatorsSurveyObject, setEditModal }) => {
     const editSurveyFunction = (surveyObj) => {
-        console.log(surveyObj, "surveyObj")
         setCreatorsSurveyObject(surveyObj)
         setEditModal(true)
         modalVisibilityAction(true)

@@ -6,6 +6,8 @@ import CreatorsSurveyTable from '../../components/creatorsSurvey/table'
 import { Failure, Success } from '../../components/toast'
 
 const CreatorsSurvey = () => {
+    const token = localStorage.getItem("token")
+    const [dataList, setDataList] = useState([])
     const [addCreatorsSurveyModal, setAddCreatorsSurveyModal] = useState(false)
     const [editModal, setEditModal] = useState(false)
     const [creatorsSurveyObject, setCreatorsSurveyObject] = useState(
@@ -16,9 +18,8 @@ const CreatorsSurvey = () => {
             answer_3: "",
             answer_4: ""
         })
-    const [dataList, setDataList] = useState([])
+
     const getCreatorsSurvey = () => {
-        const token = localStorage.getItem("token")
         axios.get(`http://authentic-web.authenticmatchinglimited.com/api/get_creator_surveys`,
             {
                 headers: {
@@ -34,7 +35,6 @@ const CreatorsSurvey = () => {
             })
     }
     const addUpdateCreatorsSurvey = () => {
-        const token = localStorage.getItem("token")
         if (!editModal) {
             axios.post(`http://authentic-web.authenticmatchinglimited.com/api/add_creator_survey`, creatorsSurveyObject,
                 {
