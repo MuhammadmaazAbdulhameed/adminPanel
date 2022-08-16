@@ -26,7 +26,7 @@ const Metrics = () => {
     const updateAddInstagramFunction = () => {
         const obj = { ...instagramObject, type: "instagram" }
         if (!editInstagramModal) {
-            axios.post(`http://authentic-web.authenticmatchinglimited.com/api/add_keep_on_track`,
+            axios.post(`https://authentic-web.authenticmatchinglimited.com/api/add_keep_on_track`,
                 obj,
                 {
                     headers: {
@@ -47,7 +47,7 @@ const Metrics = () => {
                     Failure(err?.response?.data?.error?.message)
                 })
         } else {
-            axios.patch(`http://authentic-web.authenticmatchinglimited.com/api/edit_category`,
+            axios.patch(`https://authentic-web.authenticmatchinglimited.com/api/edit_category`,
                 obj,
                 {
                     headers: {
@@ -72,7 +72,7 @@ const Metrics = () => {
     const updateAddTikTokFunction = () => {
         const obj = { ...tikTokObject, type: "tiktok" }
         if (!editInstagramModal) {
-            axios.post(`http://authentic-web.authenticmatchinglimited.com/api/add_keep_on_track`,
+            axios.post(`https://authentic-web.authenticmatchinglimited.com/api/add_keep_on_track`,
                 obj,
                 {
                     headers: {
@@ -93,7 +93,7 @@ const Metrics = () => {
                     Failure(err?.response?.data?.error?.message)
                 })
         } else {
-            axios.patch(`http://authentic-web.authenticmatchinglimited.com/api/edit_category`,
+            axios.patch(`https://authentic-web.authenticmatchinglimited.com/api/edit_category`,
                 obj,
                 {
                     headers: {

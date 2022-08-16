@@ -26,7 +26,7 @@ const Login = () => {
       password
     }
 
-    axios.post(`http://authentic-web.authenticmatchinglimited.com/api/admin_login`, body)
+    axios.post(`https://authentic-web.authenticmatchinglimited.com/api/admin_login`, body)
       .then(response => {
         console.log(response?.data, "response?.data")
         localStorage.setItem('userDetails', JSON.stringify(response?.data?.response?.detail))

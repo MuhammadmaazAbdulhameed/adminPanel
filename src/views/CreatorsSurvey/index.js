@@ -20,7 +20,7 @@ const CreatorsSurvey = () => {
         })
 
     const getCreatorsSurvey = () => {
-        axios.get(`http://authentic-web.authenticmatchinglimited.com/api/get_creator_surveys`,
+        axios.get(`https://authentic-web.authenticmatchinglimited.com/api/get_creator_surveys`,
             {
                 headers: {
                     Accept: 'application/json',
@@ -36,7 +36,7 @@ const CreatorsSurvey = () => {
     }
     const addUpdateCreatorsSurvey = () => {
         if (!editModal) {
-            axios.post(`http://authentic-web.authenticmatchinglimited.com/api/add_creator_survey`, creatorsSurveyObject,
+            axios.post(`https://authentic-web.authenticmatchinglimited.com/api/add_creator_survey`, creatorsSurveyObject,
                 {
                     headers: {
                         Accept: 'application/json',
@@ -60,7 +60,7 @@ const CreatorsSurvey = () => {
                     Failure(err?.response?.data?.error?.message)
                 })
         } else {
-            axios.patch(`http://authentic-web.authenticmatchinglimited.com/api/edit_creator_survey`, creatorsSurveyObject,
+            axios.patch(`https://authentic-web.authenticmatchinglimited.com/api/edit_creator_survey`, creatorsSurveyObject,
                 {
                     headers: {
                         Accept: 'application/json',

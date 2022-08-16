@@ -34,7 +34,7 @@ const Campaigns = () => {
   })
 
   const getCategory = () => {
-    axios.get(`http://authentic-web.authenticmatchinglimited.com/api/get_categories`,
+    axios.get(`https://authentic-web.authenticmatchinglimited.com/api/get_categories`,
       {
         headers: {
           Accept: 'application/json',
@@ -51,7 +51,7 @@ const Campaigns = () => {
   const addUpdateCampaignQuestionFunction = () => { }
   const addUpdateCampaignCategoryFunction = () => {
     if (!editCampaignCategoryModal) {
-      axios.post(`http://authentic-web.authenticmatchinglimited.com/api/add_category`,
+      axios.post(`https://authentic-web.authenticmatchinglimited.com/api/add_category`,
         campaignCategoryObject,
         {
           headers: {
@@ -72,7 +72,7 @@ const Campaigns = () => {
           Failure(err?.response?.data?.error?.message)
         })
     } else {
-      axios.patch(`http://authentic-web.authenticmatchinglimited.com/api/edit_category`,
+      axios.patch(`https://authentic-web.authenticmatchinglimited.com/api/edit_category`,
         campaignCategoryObject,
         {
           headers: {
