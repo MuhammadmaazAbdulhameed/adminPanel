@@ -1,7 +1,12 @@
-import Avatar from '@components/avatar'
 import { Button, Table } from 'reactstrap'
 
-const CampaignsCategoriesTable = () => {
+const CampaignsCategoriesTable = ({ data, modalVisibilityAction, setCampaignCategoryObject, setEditModal }) => {
+    const editCategoryFunction = (categoryObj) => {
+        setCampaignCategoryObject(categoryObj)
+        setEditModal(true)
+        modalVisibilityAction(true)
+    }
+
     return (
         <Table responsive bordered className='bg-white shadow-sm rounded'>
             <thead >
@@ -22,16 +27,16 @@ const CampaignsCategoriesTable = () => {
                 </tr>
             </thead>
             <tbody>
-                {[1, 2, 3, 4]?.map((item) => (
-                    <tr>
+                {data?.map((item, index) => (
+                    <tr key={item?.category_id}>
                         <td className='border-bottom-0 border-start-0' align='center' width={10}>
-                            <small className='text-xs fw-lighter  text-secondary'>{item}</small>
+                            <small className='text-xs fw-lighter  text-secondary'>{index + 1}</small>
                         </td>
-                        <td className='border-bottom-0 border-start-0'  width="80%">
-                            <small className='text-xs fw-lighter  text-secondary'>Beauty</small>
+                        <td className='border-bottom-0 border-start-0' width="80%">
+                            <small className='text-xs fw-lighter  text-secondary'>{item?.name}</small>
                         </td>
-                        <td className='border-bottom-0 border-start-0 border-end-0' align='center'  width={10}>
-                            <Button.Ripple size='sm' color='primary'>
+                        <td className='border-bottom-0 border-start-0 border-end-0' align='center' width={10}>
+                            <Button.Ripple size='sm' color='primary' onClick={() => editCategoryFunction(item)}>
                                 <small className='text-xs fw-lighter  '>{"Edit"}</small>
                             </Button.Ripple>
                         </td>
