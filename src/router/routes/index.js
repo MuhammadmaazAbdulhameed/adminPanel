@@ -29,6 +29,7 @@ const Dashbaord = lazy(() => import("../../views/Dashboard/index"))
 const Influencer = lazy(() => import("../../views/Influencer/index"))
 const Brands = lazy(() => import("../../views/Brands/index"))
 const Campaigns = lazy(() => import("../../views/Campaigns/index"))
+const Metrics = lazy(() => import("../../views/Metrics/index"))
 const CreatorsSurvey = lazy(() => import("../../views/CreatorsSurvey/index"))
 const BuyMoreContent = lazy(() => import("../../views/BuyMoreContent/index"))
 const Login = lazy(() => import("../../views/Login"))
@@ -58,6 +59,10 @@ const Routes = [
   {
     path: "/campaigns",
     element: <Campaigns />
+  },
+  {
+    path: "/metrics",
+    element: <Metrics />
   },
   {
     path: "/creators-survey",

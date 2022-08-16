@@ -26,6 +26,12 @@ export default [
     navLink: "/campaigns"
   },
   {
+    id: "metrics",
+    title: "Metrics",
+    icon: <Mail size={20} />,
+    navLink: "/metrics"
+  },
+  {
     id: "creatorsSurvey",
     title: "Creator's Survey",
     icon: <Mail size={20} />,
