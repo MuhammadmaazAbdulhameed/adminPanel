@@ -3,39 +3,40 @@ import { Button, Input, Modal, ModalBody, ModalFooter, ModalHeader, Row, Col } f
 
 const CreatorsSurveyModal = ({
   modalVisible, modalVisibilityAction,
-  question, setQuestion,
-  answer_1, setAnswer_1,
-  answer_2, setAnswer_2,
-  answer_3, setAnswer_3,
-  answer_4, setAnswer_4,
-  addUpdateFunction
+  creatorsSurveyObject,
+  setCreatorsSurveyObject,
+  addUpdateFunction,
+  editModal
 }) => {
+  const setInputStateFunction = (e) => {
+    setCreatorsSurveyObject(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
   return (
     <Modal className='modal-dialog-centered px-5 ' isOpen={modalVisible} toggle={() => modalVisibilityAction(!modalVisible)}>
       <ModalHeader className='bg-transparent py-0 ' toggle={() => modalVisibilityAction(!modalVisible)}></ModalHeader>
       <ModalBody className='px-sm-2 mx-50 pt-0'>
-        <h3 className='text-center mb-1 text-black fw-bolder'>Add New Survey Creator</h3>
+        <h3 className='text-center mb-1 text-black fw-bolder'>{editModal ? "Edit " : "Add New "}Survey Creator</h3>
         <Row tag='form' className='gy-1 gx-2 mt-75'>
           <Col xs={12}>
-            <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder='Question' />
+            <Input id="question" name="question" value={creatorsSurveyObject.question} onChange={setInputStateFunction} placeholder='Question' />
           </Col>
           <Col xs={12}>
-            <Input value={answer_1} onChange={(e) => setAnswer_1(e.target.value)} placeholder='Answer' />
+            <Input id="answer_1" name="answer_1" value={creatorsSurveyObject.answer_1} onChange={setInputStateFunction} placeholder='Answer' />
           </Col>
           <Col xs={12}>
-            <Input value={answer_2} onChange={(e) => setAnswer_2(e.target.value)} placeholder='Answer' />
+            <Input id="answer_2" name="answer_2" value={creatorsSurveyObject.answer_2} onChange={setInputStateFunction} placeholder='Answer' />
           </Col>
           <Col xs={12}>
-            <Input value={answer_3} onChange={(e) => setAnswer_3(e.target.value)} placeholder='Answer' />
+            <Input id="answer_3" name="answer_3" value={creatorsSurveyObject.answer_3} onChange={setInputStateFunction} placeholder='Answer' />
           </Col>
           <Col xs={12}>
-            <Input value={answer_4} onChange={(e) => setAnswer_4(e.target.value)} placeholder='Answer' />
+            <Input id="answer_4" name="answer_4" value={creatorsSurveyObject.answer_4} onChange={setInputStateFunction} placeholder='Answer' />
           </Col>
         </Row>
       </ModalBody>
       <ModalFooter className='pb-2'>
         <Button.Ripple color='primary' className='w-100' onClick={addUpdateFunction}>
-          Submit
+          {editModal ? "Save" : "Submit"}
         </Button.Ripple>
       </ModalFooter>
     </Modal>
