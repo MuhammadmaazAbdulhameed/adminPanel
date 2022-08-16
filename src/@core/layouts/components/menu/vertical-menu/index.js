@@ -75,7 +75,7 @@ const Sidebar = (props) => {
               options={{ wheelPropagation: false }}
               onScrollY={(container) => scrollMenu(container)}
             >
-              <ul className="navigation navigation-main">
+              <ul className="navigation navigation-main d-flex flex-column gap-25">
                 <VerticalNavMenuItems
                   items={menuData}
                   menuData={menuData}
