@@ -1,9 +1,10 @@
 import Avatar from '@components/avatar'
 import avatar2 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
-import moment from 'moment'
+import { Check, X } from 'react-feather'
+
 import { Button, Table } from 'reactstrap'
 
-const InfluencerTable = () => {
+const InfluencerTable = ({ data, acceptRejectAction }) => {
     return (
         <Table responsive bordered className='bg-white shadow-sm rounded'>
             <thead >
@@ -49,35 +50,45 @@ const InfluencerTable = () => {
                 </tr>
             </thead>
             <tbody>
-                {[1, 2, 3, 4]?.map((item) => (
-                    <tr>
+                {data?.map((item, index) => (
+                    <tr key={item?.influencer_id}>
                         <td className='border-bottom-0 border-start-0' align='center' width={5}>
-                            <small className='text-xs fw-lighter text-secondary'>{item}</small>
+                            <small className='text-xs fw-lighter text-secondary'>{index + 1}</small>
                         </td>
                         <td className='border-bottom-0 border-start-0' align='center' width={600}>
-                            <div className='d-flex justify-content-between align-items-center gap-1'>
+                            <div className='d-flex  align-items-center gap-1'>
                                 <div>
                                     <Avatar className="rounded" img={avatar2} size='sm' />
                                 </div>
                                 <div>
-                                    <small className='text-xs fw-lighter text-secondary'>Wendy Cardenas</small>
+                                    <small className='text-xs fw-lighter text-secondary'>{item?.influencer_name}</small>
                                 </div>
                             </div>
                         </td>
-                        <td className='border-bottom-0 border-start-0' align='center' width={200}><small className='text-xs fw-lighter text-secondary'>wendycardenas@gmail.com</small></td>
-                        <td className='border-bottom-0 border-start-0' align='center' width={200}><small className='text-xs fw-lighter text-secondary'>+44 79112356</small></td>
+                        <td className='border-bottom-0 border-start-0' align='center' width={200}><small className='text-xs fw-lighter text-secondary'>{item?.email}</small></td>
+                        <td className='border-bottom-0 border-start-0' align='center' width={200}><small className='text-xs fw-lighter text-secondary'> - </small></td>
                         <td className='border-bottom-0 border-start-0' align='center' width={380}>
-                            <div className='d-flex flex-column'>
+                            <small> - </small>
+                            {/* <div className='d-flex flex-column'>
                                 <small className='text-xs fw-lighter text-secondary'>{moment().format('hh:mm A')}</small>
                                 <small className='text-xs fw-lighter text-secondary'>{moment().format('dd MMM YYYY')}</small>
-                            </div>
+                            </div> */}
                         </td>
-                        <td className='border-bottom-0 border-start-0' align='center' width={10}><small className='text-xs fw-lighter text-secondary'>{item}</small></td>
-                        <td className='border-bottom-0 border-start-0' align='center' width={10}><small className='text-xs fw-lighter text-secondary'>{item}</small></td>
+                        <td className='border-bottom-0 border-start-0' align='center' width={10}><small className='text-xs fw-lighter text-secondary'> - </small></td>
+                        <td className='border-bottom-0 border-start-0' align='center' width={10}><small className='text-xs fw-lighter text-secondary'> - </small></td>
                         <td className='border-bottom-0 border-start-0 border-end-0' align='center' width={10}>
-                            <Button.Ripple size='sm' color='primary'>
+                            <div className='d-flex align-items-center gap-50'>
+                                <Button.Ripple onClick={() => acceptRejectAction(item?.influencer_id)} size="sm" className='btn-icon' color='success'>
+                                    <Check size={16} />
+                                </Button.Ripple>
+                                <Button.Ripple size="sm" className='btn-icon' color='danger'>
+                                    <X size={16} />
+                                </Button.Ripple>
+                            </div>
+
+                            {/* <Button.Ripple size='sm' color='primary'>
                                 <small className='text-xs fw-lighter '>{"Detail"}</small>
-                            </Button.Ripple>
+                            </Button.Ripple> */}
                         </td>
                     </tr>
                 ))}

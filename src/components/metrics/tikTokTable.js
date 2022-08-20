@@ -2,7 +2,7 @@
 import { Trash2 } from 'react-feather'
 import { Button, Col, Row, Table } from 'reactstrap'
 
-const TikTokTable = ({ title, modalVisible, modalVisibilityAction, setKeepOnTrackObject, setEditModal }) => {
+const TikTokTable = ({ title, modalVisible, modalVisibilityAction, setKeepOnTrackObject, setEditModal, data, deleteAction }) => {
     const modalToggleFunction = () => {
         setEditModal(false)
         setKeepOnTrackObject({
@@ -42,17 +42,17 @@ const TikTokTable = ({ title, modalVisible, modalVisibilityAction, setKeepOnTrac
                     </tr>
                 </thead>
                 <tbody>
-                    {[1, 2, 3, 4]?.map((item) => (
-                        <tr>
+                    {data?.map((item, index) => (
+                        <tr key={item?.keep_on_track_id}>
                             <td className='border-bottom-0 border-start-0' align='center' width={10}>
-                                <small className='text-xs fw-lighter  text-secondary'>{item}</small>
+                                <small className='text-xs fw-lighter  text-secondary'>{index + 1}</small>
                             </td>
                             <td className='border-bottom-0 border-start-0'  >
-                                <small className='text-xs fw-lighter  text-secondary'>Following</small>
+                                <small className='text-xs fw-lighter  text-secondary'>{item?.field}</small>
                             </td>
                             <td className='border-bottom-0 border-start-0 border-end-0' align='center' width={"10%"}>
                                 <div className='d-flex justify-content-center gap-50'>
-                                    <Button.Ripple className='btn-icon py-50' color='danger'>
+                                    <Button.Ripple onClick={() => deleteAction(item?.keep_on_track_id)} className='btn-icon py-50' color='danger'>
                                         <Trash2 size={12} />
                                     </Button.Ripple>
                                     <Button.Ripple size='sm' color='primary'>
