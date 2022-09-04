@@ -32,7 +32,7 @@ const Metrics = () => {
     })
 
     const getKeepOnTrack = () => {
-        axios.get(`https://authentic-web.authenticmatchinglimited.com/api/get_keep_on_tracks`,
+        axios.get(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/get_keep_on_tracks`,
             {
                 headers: {
                     Accept: 'application/json',
@@ -52,7 +52,7 @@ const Metrics = () => {
     const updateAddInstagramFunction = () => {
         const obj = { ...instagramObject, type: "instagram" }
         if (!editInstagramModal) {
-            axios.post(`https://authentic-web.authenticmatchinglimited.com/api/add_keep_on_track`,
+            axios.post(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/add_keep_on_track`,
                 obj,
                 {
                     headers: {
@@ -73,7 +73,7 @@ const Metrics = () => {
                     Failure(err?.response?.data?.error?.message)
                 })
         } else {
-            axios.patch(`https://authentic-web.authenticmatchinglimited.com/api/edit_category`,
+            axios.post(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/edit_category`,
                 obj,
                 {
                     headers: {
@@ -98,7 +98,7 @@ const Metrics = () => {
     const updateAddTikTokFunction = () => {
         const obj = { ...tikTokObject, type: "tiktok" }
         if (!editInstagramModal) {
-            axios.post(`https://authentic-web.authenticmatchinglimited.com/api/add_keep_on_track`,
+            axios.post(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/add_keep_on_track`,
                 obj,
                 {
                     headers: {
@@ -119,7 +119,7 @@ const Metrics = () => {
                     Failure(err?.response?.data?.error?.message)
                 })
         } else {
-            axios.patch(`https://authentic-web.authenticmatchinglimited.com/api/edit_category`,
+            axios.patch(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/edit_category`,
                 obj,
                 {
                     headers: {
@@ -156,7 +156,7 @@ const Metrics = () => {
             buttonsStyling: false
         }).then(function (result) {
             if (result.value) {
-                axios.delete(`https://authentic-web.authenticmatchinglimited.com/api/delete_keep_on_track`,
+                axios.delete(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/delete_keep_on_track`,
                     {
                         headers: {
                             Accept: 'application/json',

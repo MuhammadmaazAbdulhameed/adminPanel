@@ -9,7 +9,7 @@ export default [
   },
   {
     id: "influencer",
-    title: "Influence's",
+    title: "Influencer's",
     icon: <Mail size={20} />,
     navLink: "/influencer"
   },

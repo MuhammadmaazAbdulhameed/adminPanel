@@ -20,7 +20,7 @@ const CreatorsSurvey = () => {
         })
 
     const getCreatorsSurvey = () => {
-        axios.get(`https://authentic-web.authenticmatchinglimited.com/api/get_creator_surveys`,
+        axios.get(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/get_creator_surveys`,
             {
                 headers: {
                     Accept: 'application/json',
@@ -36,7 +36,7 @@ const CreatorsSurvey = () => {
     }
     const addUpdateCreatorsSurvey = () => {
         if (!editModal) {
-            axios.post(`https://authentic-web.authenticmatchinglimited.com/api/add_creator_survey`, creatorsSurveyObject,
+            axios.post(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/add_creator_survey`, creatorsSurveyObject,
                 {
                     headers: {
                         Accept: 'application/json',
@@ -60,7 +60,7 @@ const CreatorsSurvey = () => {
                     Failure(err?.response?.data?.error?.message)
                 })
         } else {
-            axios.patch(`https://authentic-web.authenticmatchinglimited.com/api/edit_creator_survey`, creatorsSurveyObject,
+            axios.post(`http://authenticinfluencersbackend-env.eba-auctmm2z.eu-west-2.elasticbeanstalk.com/api/edit_creator_survey`, creatorsSurveyObject,
                 {
                     headers: {
                         Accept: 'application/json',

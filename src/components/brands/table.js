@@ -1,8 +1,11 @@
 import Avatar from '@components/avatar'
 import avatar2 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 import { Button, Table } from 'reactstrap'
+import { Check, X } from 'react-feather'
+import appConstant from '../../configs/constants'
 
-const BrandTable = () => {
+const BrandTable = ({ data, acceptRejectAction }) => {
+    // 
     return (
         <Table responsive bordered className='bg-white shadow-sm rounded'>
             <thead >
@@ -33,27 +36,52 @@ const BrandTable = () => {
                 </tr>
             </thead>
             <tbody>
-                {[1, 2, 3, 4]?.map((item) => (
-                    <tr>
+                {data?.map((item, index) => (
+                    <tr key={item.brand_id}>
                         <td className='border-bottom-0 border-start-0' align='center' width={5}>
-                            <small className='text-xs fw-lighter text-secondary'>{item}</small>
+                            <small className='text-xs fw-lighter text-secondary'>{index + 1}</small>
                         </td>
                         <td className='border-bottom-0 border-start-0' align='center' width={200}>
-                            <div className='d-flex justify-content-between align-items-center gap-1'>
+                            <div className='d-flex  align-items-center gap-1'>
                                 <div>
                                     <Avatar className="rounded" img={avatar2} size='sm' />
                                 </div>
                                 <div>
-                                    <small className='text-xs fw-lighter text-secondary'>Wendy Cardenas</small>
+                                    <small className='text-xs fw-lighter text-secondary'>{item?.brand_name}</small>
                                 </div>
                             </div>
                         </td>
-                        <td className='border-bottom-0 border-start-0' align='center' width={200}><small className='text-xs fw-lighter text-secondary'>wendycardenas@gmail.com</small></td>
-                        <td className='border-bottom-0 border-start-0' align='center' width={200}><small className='text-xs fw-lighter text-secondary'>+44 79112356</small></td>
+                        <td className='border-bottom-0 border-start-0' width={200}><small className='text-xs fw-lighter text-secondary'>{item?.email}</small></td>
+                        <td className='border-bottom-0 border-start-0' width={200}><small className='text-xs fw-lighter text-secondary'> - </small></td>
                         <td className='border-bottom-0 border-start-0 border-end-0' align='center' width={10}>
-                            <Button.Ripple size='sm' color='primary'>
+                            <div className='d-flex justify-content-center'>
+                                {item?.status === appConstant.active ? (<Button.Ripple size='sm' color='primary'>
+                                    <small className='text-xs fw-lighter '>{"Detail"}</small>
+                                </Button.Ripple>) : (
+                                    <div className='d-flex align-items-center gap-50'>
+                                        <Button.Ripple onClick={() => acceptRejectAction(item?.brand_id)} size="sm" className='btn-icon' color='success'>
+                                            <Check size={16} />
+                                        </Button.Ripple>
+                                        <Button.Ripple size="sm" className='btn-icon' color='danger'>
+                                            <X size={16} />
+                                        </Button.Ripple>
+                                    </div>
+                                )}
+                            </div>
+                            {/* <div className='d-flex justify-content-center'>
+                                <div className='d-flex align-items-center gap-50'>
+                                    <Button.Ripple onClick={() => acceptRejectAction(item?.brand_id)} size="sm" className='btn-icon' color='success'>
+                                        <Check size={16} />
+                                    </Button.Ripple>
+                                    <Button.Ripple size="sm" className='btn-icon' color='danger'>
+                                        <X size={16} />
+                                    </Button.Ripple>
+                                </div>
+
+                            </div> */}
+                            {/* <Button.Ripple size='sm' color='primary'>
                                 <small className='text-xs fw-lighter '>{"Detail"}</small>
-                            </Button.Ripple>
+                            </Button.Ripple> */}
                         </td>
                     </tr>
                 ))}
