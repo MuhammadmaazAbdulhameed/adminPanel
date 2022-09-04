@@ -13,7 +13,7 @@ const InfluencerContentTable = () => {
                     </th>
                     <th className='bg-primary text-white border-0 '>
                         <small className='text-xs fw-lighter text-capitalize'>
-                            influence's
+                            Influencer's
                         </small>
                     </th>
                     <th className='bg-primary text-white border-0'>

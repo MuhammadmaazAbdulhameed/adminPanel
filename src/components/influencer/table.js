@@ -3,6 +3,7 @@ import avatar2 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 import { Check, X } from 'react-feather'
 
 import { Button, Table } from 'reactstrap'
+import appConstant from '../../configs/constants'
 
 const InfluencerTable = ({ data, acceptRejectAction }) => {
     return (
@@ -77,13 +78,19 @@ const InfluencerTable = ({ data, acceptRejectAction }) => {
                         <td className='border-bottom-0 border-start-0' align='center' width={10}><small className='text-xs fw-lighter text-secondary'> - </small></td>
                         <td className='border-bottom-0 border-start-0' align='center' width={10}><small className='text-xs fw-lighter text-secondary'> - </small></td>
                         <td className='border-bottom-0 border-start-0 border-end-0' align='center' width={10}>
-                            <div className='d-flex align-items-center gap-50'>
-                                <Button.Ripple onClick={() => acceptRejectAction(item?.influencer_id)} size="sm" className='btn-icon' color='success'>
-                                    <Check size={16} />
-                                </Button.Ripple>
-                                <Button.Ripple size="sm" className='btn-icon' color='danger'>
-                                    <X size={16} />
-                                </Button.Ripple>
+                            <div className='d-flex justify-content-center'>
+                                {item?.status === appConstant.active ? (<Button.Ripple size='sm' color='primary'>
+                                    <small className='text-xs fw-lighter '>{"Detail"}</small>
+                                </Button.Ripple>) : (
+                                    <div className='d-flex align-items-center gap-50'>
+                                        <Button.Ripple onClick={() => acceptRejectAction(item?.influencer_id)} size="sm" className='btn-icon' color='success'>
+                                            <Check size={16} />
+                                        </Button.Ripple>
+                                        <Button.Ripple size="sm" className='btn-icon' color='danger'>
+                                            <X size={16} />
+                                        </Button.Ripple>
+                                    </div>
+                                )}
                             </div>
 
                             {/* <Button.Ripple size='sm' color='primary'>
